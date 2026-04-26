@@ -14,14 +14,14 @@ En lugar de descargar manualmente las imágenes e iniciar los contenedores de My
  de las imágenes en Docker Hub.
 
 ## 🚀 Instrucciones para probar el proyecto
-* 1) Clonar el repositorio en la maquina local y entrar a la carpeta del proyecto:
-git clone https://github.com/Mathius15/proyecto-docker
+* 1) Clonar el repositorio en la maquina local y entrar a la carpeta del proyecto:  
+`git clone` https://github.com/Mathius15/proyecto-docker  
 `cd proyecto-docker-wp`
 
-* 2) (OPCIONAL) Personalizar el archivo uploads.ini para modificar el limite de subida de 300 MB:
+* 2) (OPCIONAL) Personalizar el archivo uploads.ini para modificar el limite de subida de 300 MB:  
 `nano uploads.ini`
 
-* 3) Ahora solo falta construir la imagen.
+* 3) Ahora solo falta construir la imagen.  
 `docker compose up -d –build`
 
 Para verificar el éxito se puede navegar hacia la pagina con la IP de tu servidor web y el puerto 8080.
