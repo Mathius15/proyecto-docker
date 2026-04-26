@@ -1,0 +1,32 @@
+services:
+  # SERVICIO 1: Base de datos MySQL
+  db:                                   #Nombre del servicio
+    image: mysql:latest                 #Imagen oficial de MySQL
+    container_name: base-mysql          #Asigno nombre al container
+    restart: always                     #Si se cae, reinicia el servidor
+    environment:                        # Variables de entorno para configurar la base de datos inicial
+      MYSQL_ROOT_PASSWORD: docker123    #Contraseña root
+      MYSQL_DATABASE: wordpress_db
+      MYSQL_USER: usuario              #Usuario y contraseña que no es root
+      MYSQL_PASSWORD: usuario
+    volumes:
+      # Mapeamos el directorio interno(/var/lib) hacia una carpeta en tu proyecto(./mysql)
+      - ./mysql_data:/var/lib/mysql
+
+  # SERVICIO 2: Aplicación WordPress
+  wordpress:
+    build: .                             # Indicamos que use el dockerfile para la imagen
+    container_name: mi-wordpress
+    restart: always
+    ports:
+      - "8080:80"                        # Mapea el puerto 8080 del servidor al 80 del contenedor
+    environment:
+      # Credenciales para que WordPress se conecte al servicio "db"
+      WORDPRESS_DB_HOST: db:3306         # Le avisa a wordpress que la base de datos esta en el host "db" con puerto 3306 (default de MySQL)
+      WORDPRESS_DB_USER: usuario
+      WORDPRESS_DB_PASSWORD: usuario
+      WORDPRESS_DB_NAME: wordpress_db
+    volumes:                            #Usa la carpeta ./wp_data para guardar las imagenes, etc
+      - ./wp_data:/var/www/html
+    depends_on:
+      - db                              # Le indica a Docker que levante primero la base de datos antes que WordPress
