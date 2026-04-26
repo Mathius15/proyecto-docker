@@ -12,5 +12,9 @@ mediante dockerfile.
 3) Dentro del archivo "docker-compose.yml": Indico las imagenes a utilizar, configuro variables de entorno,
 defino volumenes locales para guardar datos generado, conecto WordPress con MySQL mediante la red interna
 de Docker Compose.
+Para no subir a github los datos de la BD, creo un .gitignore y agrego las carpetas donde se va a almacenar la BD.
 La configuracion declarada en el archivo (variables de entorno, puertos, volumenes) se consulto en la documentacion
 oficial de las imagenes en Docker Hub.
+
+4)Finalmente con el comando "docker compose up -d --build" Levante los contenedores de MySQL y WordPress.
+Verifique que ambos contenedores esten corriendo con "docker ps".

@@ -10,7 +10,7 @@ services:
       MYSQL_USER: usuario              #Usuario y contraseña que no es root
       MYSQL_PASSWORD: usuario
     volumes:
-      # Mapeamos el directorio interno(/var/lib) hacia una carpeta en tu proyecto(./mysql)
+      # Mapeamos el directorio interno(/var/lib) hacia la carpeta del proyecto(./mysql)
       - ./mysql_data:/var/lib/mysql
 
   # SERVICIO 2: Aplicación WordPress
