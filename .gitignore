@@ -1,0 +1,6 @@
+# Ignorar datos persistentes de los volúmenes de Docker
+db_data/
+wp_data/
+
+# Ignorar archivos de variables de entorno (por seguridad)
+.env
